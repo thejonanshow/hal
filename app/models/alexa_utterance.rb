@@ -1,0 +1,2 @@
+class AlexaUtterance < ApplicationRecord
+end
