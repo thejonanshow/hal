@@ -1,4 +1,4 @@
-class Api::AlexaUtterancesController < ApplicationController
+class Api::AlexaUtterancesController < ApiController
   def create
     if valid_request?
       AlexaUtterance.create(payload: params)
