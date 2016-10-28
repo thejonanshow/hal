@@ -19,10 +19,12 @@
       "name": "deploy",
       "slots": {
         "environment": {
-          "name": "test-environment"
+          "name": "environment",
+          "value": "test-environment"
         },
         "application": {
-          "name": "test-application"
+          "name": "application",
+          "value": "test-application"
         }
       }
     }

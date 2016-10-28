@@ -23,5 +23,20 @@ RSpec.describe Api::AlexaUtterancesController, type: :controller do
       output = response_body["response"]["outputSpeech"]["text"]
       expect(output).to eql("HAL has deployed test-application to test-environment")
     end
+
+    it "makes sweet jokes" do
+      data["request"]["intent"]["name"] = "jokes"
+      data["request"]["intent"]["slots"] = {
+        adjective: {
+          name: "adjective",
+          value: "a bad listener"
+        }
+      }
+      post :create, params: data
+      response_body = JSON.parse(response.body)
+
+      output = response_body["response"]["outputSpeech"]["text"]
+      expect(output).to eql("HAL says your face is a bad listener")
+    end
   end
 end

@@ -1,21 +1,16 @@
 class AlexaResponse
-  attr_reader :application, :environment
+  attr_reader :intent
 
   def initialize(payload:)
-    @application = payload.dig(:request, :intent, :slots, :application, :value)
-    @environment = payload.dig(:request, :intent, :slots, :environment, :value)
+    case payload.dig(:request, :intent, :name)
+    when "deploy"
+      @intent = DeployIntent.new(payload: payload)
+    when "jokes"
+      @intent = JokeIntent.new(payload: payload)
+    end
   end
 
   def as_json(options)
-    {
-      version: "1.0",
-      response: {
-        outputSpeech: {
-          type: "PlainText",
-          text: "HAL has deployed #{application} to #{environment}"
-        },
-        shouldEndSession: true
-      }
-    }
+    intent.as_json(options)
   end
 end
