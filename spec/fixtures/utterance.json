@@ -2,7 +2,7 @@
   "session": {
     "sessionId": "SessionId.4da68164-e671-45ae-867d-8b53269135a6",
     "application": {
-      "applicationId": "amzn1.ask.skill.9f59767c-c370-48b7-8069-910cedb7565a"
+      "applicationId": "test-alexa-application-id"
     },
     "attributes": {},
     "user": {
@@ -19,10 +19,10 @@
       "name": "deploy",
       "slots": {
         "environment": {
-          "name": "environment"
+          "name": "test-environment"
         },
         "application": {
-          "name": "application"
+          "name": "test-application"
         }
       }
     }
