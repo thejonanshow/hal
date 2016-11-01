@@ -3,10 +3,10 @@ class AlexaResponse
 
   def initialize(payload:)
     case payload.dig(:request, :intent, :name)
+    when "AMAZON.HelpIntent"
+      @intent = Intents::Help.new(payload: payload)
     when "deploy"
-      @intent = DeployIntent.new(payload: payload)
-    when "jokes"
-      @intent = JokeIntent.new(payload: payload)
+      @intent = Intents::Deploy.new(payload: payload)
     end
   end
 
