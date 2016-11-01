@@ -10,6 +10,7 @@ gem "coffee-rails", "~> 4.2"
 gem "jquery-rails"
 gem "jbuilder", "~> 2.5"
 gem "rspec-rails", "~> 3.5"
+gem "redis", "~> 3.2"
 
 group :development, :test do
   gem "pry-byebug"

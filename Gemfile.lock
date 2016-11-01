@@ -127,6 +127,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redis (3.3.1)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -193,6 +194,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
+  redis (~> 3.2)
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   spring
