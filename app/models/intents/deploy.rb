@@ -32,7 +32,7 @@ class Intents::Deploy
       text << "lack value. At least we can agree on something."
     elsif !valid_application && valid_environment
       text = "I'm having trouble finding the application #{application}, though it's "
-      text << "clear you're trying to deploy to the #{staging} environment. "
+      text << "clear you're trying to deploy to the #{environment} environment. "
       text << "I can deploy #{application_list}. "
       text << "Do you want to try again? Alternatively you could become a monk."
     else
