@@ -13,6 +13,6 @@ class DeploymentChannel < ApplicationCable::Channel
 
   def deploy(data)
     Rails.logger.info data
-    ActionCable.server.broadcast("deployment_responses", text: "I have deployed Steve to production.")
+    Deployment.respond_to(data["text"])
   end
 end

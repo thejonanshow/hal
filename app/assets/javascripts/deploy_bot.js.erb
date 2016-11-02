@@ -1,3 +1,21 @@
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+var grammar = "<%= Deployment.grammar %>";
+var recognition = new SpeechRecognition();
+var grammar_list = new SpeechGrammarList();
+
+/*
+<%= Deployment.grammar_pretty %>
+*/
+
+
+grammar_list.addFromString(grammar, 1);
+recognition.grammars = grammar_list;
+recognition.interimResults = true;
+recognition.lang = "en-US";
+
 var recording = false;
 var speech_event = {};
 
@@ -32,9 +50,6 @@ $(document).ready(function(){
       recognition.start();
     }
   });
-
-  var recognition = new webkitSpeechRecognition();
-  recognition.interimResults = true;
   recognition.onresult = function(event) {
     speech_event = event;
     var output = event.results[0][0].transcript
@@ -45,6 +60,8 @@ $(document).ready(function(){
 
     if (event.results[0].isFinal) {
       recording = false;
+      recognition.stop();
+
       $(".mic_on").show();
       $(".mic_hover").show();
       App.deployment.deploy(output);

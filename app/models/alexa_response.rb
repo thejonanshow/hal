@@ -2,9 +2,7 @@ class AlexaResponse
   attr_reader :intent
 
   def initialize(payload:)
-    case payload.dig(:request, :intent, :name)
-    when "AMAZON.HelpIntent"
-      @intent = Intents::Help.new(payload: payload)
+    case payload.dig(:request, :intent, :name).downcase
     when "deploy"
       @intent = Intents::Deploy.new(payload: payload)
     end
