@@ -21,7 +21,7 @@ RSpec.describe Api::AlexaUtterancesController, type: :controller do
       response_body = JSON.parse(response.body)
 
       output = response_body["response"]["outputSpeech"]["text"]
-      expect(output).to eql("Deploy Bot has deployed test-application to test-environment")
+      expect(output).to include("test-application to test-environment")
     end
   end
 end
