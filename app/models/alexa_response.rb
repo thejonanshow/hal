@@ -5,7 +5,11 @@ class AlexaResponse
     case payload.dig(:request, :intent, :name).downcase
     when "deploy"
       @intent = Intents::Deploy.new(payload: payload)
-      DeploymentJob.perform_later(intent.application, intent.environment)
+      DeploymentJob.perform_later(
+        source: "alexa",
+        application: intent.application,
+        environment: intent.environment
+      )
     end
   end
 

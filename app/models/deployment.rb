@@ -40,7 +40,11 @@ class Deployment < ApplicationRecord
 
     if matched = valid?(text)
       deploy_word, application, joiner_word, environment = matched.to_a[1..-1]
-      DeploymentJob.perform_later(application, environment)
+      DeploymentJob.perform_later(
+        source: "web",
+        application: application,
+        environment: environment
+      )
 
       reply = "OK, I've initiated a deploy of #{application} to #{environment}. "
       reply << "I'll let you know the status when it completes."
