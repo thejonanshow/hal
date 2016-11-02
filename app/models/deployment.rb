@@ -22,7 +22,7 @@ class Deployment < ApplicationRecord
     command =  "(#{deploy_words.join(' | ')})"
     command << "(#{applications.join(' | ')})"
     command << "(#{environments.join(' | ')})"
-    command << "(#{joiner.join(' | ')})"
+    command << "(#{joiner_words.join(' | ')})"
 
     grammar << "public <command> = #{command};"
   end
