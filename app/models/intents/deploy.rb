@@ -4,8 +4,8 @@ class Intents::Deploy
   attr_reader :application, :environment
 
   def initialize(payload:)
-    @application = payload.dig(:request, :intent, :slots, :application, :value)
-    @environment = payload.dig(:request, :intent, :slots, :environment, :value)
+    @application = payload.dig(:request, :intent, :slots, :application, :value).downcase
+    @environment = payload.dig(:request, :intent, :slots, :environment, :value).downcase
   end
 
   def output_text
