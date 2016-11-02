@@ -1,0 +1,17 @@
+{
+  "intents": [
+    {
+      "intent": "Deploy",
+      "slots": [
+        {
+          "name": "application",
+          "type": "application_list"
+        },
+        {
+          "name": "environment",
+          "type": "environment_list"
+        }
+      ]
+    }
+  ]
+}

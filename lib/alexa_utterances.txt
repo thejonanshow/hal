@@ -1,0 +1,4 @@
+Deploy to deploy {application} to {environment}
+Deploy deploy {application} to {environment}
+Deploy to ship {application} to {environment}
+Deploy ship {application} to {environment}
