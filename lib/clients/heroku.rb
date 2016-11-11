@@ -5,6 +5,10 @@ module Clients
     steve: {
       production: "hal-steve-production",
       staging: "hal-steve-staging"
+    },
+    hal: {
+      production: "hal-rb-production",
+      staging: "hal-rb-staging"
     }
   }
 
