@@ -120,7 +120,7 @@ $(document).ready(function() {
     var output = event.results[0][0].transcript
     var done_speaking = event.results[0].isFinal
 
-    if (output == "how" && done_speaking == true) {
+    if ((output == "how" || output == "pal" || output == "hal" || output == "hell") && done_speaking == true) {
       start_listening();
     }
     else if (listening && done_speaking) {
