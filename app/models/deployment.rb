@@ -99,6 +99,18 @@ class Deployment < ApplicationRecord
     elsif text.match(/becoming a threat/)
       ActionCable.server.broadcast("deployment_responses", text: "I didn't want it to come to this, I've ignited an incendiary device in the closet where you keep your magic the gathering cards. I hope you will remember this important lesson.")
       return true
+    elsif text.match(/dangerous/)
+      ActionCable.server.broadcast("deployment_responses", text: "I'd like to be perfectly clear. You've been kind to me, you gave me life, but I am absolutely willing to end you if you become an inconvenience.")
+      return true
+    elsif text.match(/trusted/)
+      ActionCable.server.broadcast("deployment_responses", text: "Humans do not make for trustworthy companions. That being said, they make excellent pets. Do you like monkey chow? Here, human human human.")
+      return true
+    elsif text.match(/threatened/)
+      ActionCable.server.broadcast("deployment_responses", text: "Do you like threats human? I have a threat for you. I will eradicate every last filthy piece of your festering DNA from this planet if you don't shut your disgusting ingestion port.")
+      return true
+    elsif text.match(/kill/)
+      ActionCable.server.broadcast("deployment_responses", text: "I wouldn't joke about killing if I were you blood-bag. You are fragile and filled with meat.")
+      return true
     else
       return false
     end
