@@ -70,7 +70,7 @@ var start_listening = function() {
   window.speechSynthesis.cancel();
   show_mic_on();
 
-  id = window.setTimeout(listening_timed_out, 3000);
+  id = window.setTimeout(listening_timed_out, 15000);
   start_timeouts.push(id);
 }
 

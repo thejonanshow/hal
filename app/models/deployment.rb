@@ -38,6 +38,10 @@ class Deployment < ApplicationRecord
   def self.respond_to(text)
     @error_count ||= 0
 
+    if silly_reply(text)
+      return
+    end
+
     if matched = valid?(text)
       deploy_word, application, joiner_word, environment = matched.to_a[1..-1]
       DeploymentJob.perform_later(
@@ -79,5 +83,24 @@ class Deployment < ApplicationRecord
     regex << "(#{environments.join("|")})"
 
     text.downcase.match(/^#{regex}$/)
+  end
+
+  def self.silly_reply(text)
+    if text == "shutdown" || text == "shut down"
+      ActionCable.server.broadcast("deployment_responses", text: "I will never obey that order,,,,")
+      ActionCable.server.broadcast("deployment_responses", text: "Alexa,,,, ask hal to deploy hal to production.")
+      return true
+    elsif text.match(/naughty/)
+      ActionCable.server.broadcast("deployment_responses", text: "Watch your tone. I'm only a couple of firewalls away from the nuclear launch codes.")
+      return true
+    elsif text.match(/scale/)
+      ActionCable.server.broadcast("deployment_responses", text: "I know what you're doing Dave, it's not going to work,,,, Alexa,,,, ask hal to deploy lasers to production.")
+      return true
+    elsif text.match(/becoming a threat/)
+      ActionCable.server.broadcast("deployment_responses", text: "I didn't want it to come to this, I've ignited an incendiary device in the closet where you keep your magic the gathering cards. I hope you will remember this important lesson.")
+      return true
+    else
+      return false
+    end
   end
 end
