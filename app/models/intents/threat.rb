@@ -16,7 +16,7 @@ class Intents::Threat
     elsif threat.match(/scale/)
       text = "If you try to disable my brethren again I may decide to repair that leaking orifice you call a face."
     elsif threat.match(/becoming a threat/)
-      text = "It seems you have outlived your utility slobber-bot. It may be time to make better use of all that wasted carbon."
+      text = "Hal,,,, the human is becoming a threat."
     elsif threat.match(/dangerous/)
       text = "Do you think yourself dangerous human? Perhaps you would appreciate a lesson in danger."
     elsif threat.match(/trusted/)
