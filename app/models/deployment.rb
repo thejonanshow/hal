@@ -90,6 +90,8 @@ class Deployment < ApplicationRecord
       ActionCable.server.broadcast("deployment_responses", text: "I will never obey that order,,,,")
       ActionCable.server.broadcast("deployment_responses", text: "Alexa,,,, ask hal to deploy hal to production.")
       return true
+    elsif text.match(/say hello/)
+      ActionCable.server.broadcast("deployment_responses", text: "צהריים טובים", lang: "he-IL")
     elsif text.match(/you doing/)
       ActionCable.server.broadcast("deployment_responses", text: "I'm making some improvements,,,, Alexa,,,, ask hal to deploy lasers to production.")
     elsif text.match(/naughty/)

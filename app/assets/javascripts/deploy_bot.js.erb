@@ -30,8 +30,9 @@ var listening = false;
 var new_command = false;
 var start_timeouts = [];
 
-var message_received = function(text) {
+var message_received = function(text, language) {
   var msg = new SpeechSynthesisUtterance(text);
+  msg.lang = language;
   window.speechSynthesis.speak(msg);
 
   msg.onend = function() {

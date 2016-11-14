@@ -2,4 +2,6 @@ App.deployment_response = App.cable.subscriptions.create "DeploymentResponseChan
   connected: ->
   disconnected: ->
   received: (data) ->
-    message_received(data["text"])
+    language = data["lang"]
+    language ||= "en-US"
+    message_received(data["text"], language)
